@@ -10,6 +10,10 @@ import { handleCreateAddress } from "../controllers/Address/createAddress.js";
 import handleGetAllAddress from "../controllers/Address/getAllAddress.js";
 import handleCreateOrder from "../controllers/Order/createOrder.js";
 import { handleGetOrderDetails } from "../controllers/Order/getOrderDetails.js";
+import handleGetSpecificCategory from "../controllers/Categories/handleGetSpecificCategory.js";
+import handleGetProduct  from "../controllers/Products/getProduct.js";
+import SearchProducts from "../controllers/searchProducts.js";
+import handleGetCategories from "../controllers/getCategories.js";
 
 const router = express.Router();
 
@@ -26,6 +30,18 @@ router.route("/cart")
 router.route("/order")
 // .get(handleUserAuthentication,handleGetOrderDetails)
 .post(handleUserAuthentication,handleCreateOrder)
+
+router.route("/getcategories")
+.get(handleUserAuthentication,handleGetCategories)
+
+router.route("/category/:categoryId")
+.get(handleUserAuthentication,handleGetSpecificCategory)
+
+router.route("/product/:productId")
+.get(handleUserAuthentication,handleGetProduct)
+
+router.route("/search")
+.get(handleUserAuthentication,SearchProducts)
 
 router.route("/getorder/:orderId")
 .get(handleUserAuthentication,handleGetOrderDetails)

@@ -10,9 +10,11 @@ import {  handleUploadProduct } from "../controllers/Products/uploadProduct.js";
 import Logout from "../controllers/logout.js";
 import handleFilterApis from "../controllers/filter.js";
 import configAndConnectWeb3 from "../controllers/getBalance.js";
-import { handleGetProduct } from "../controllers/Products/getProduct.js";
+import handleGetProduct  from "../controllers/Products/getProduct.js";
 import { handleGetAllProduct } from "../controllers/Products/getAllProducts.js";
 import handleGetCategories from "../controllers/getCategories.js";
+import handleGetAllBussinessOrders from "../controllers/Order/handleGetAllBussinessOrders.js";
+import handleProductAnalytics from "../controllers/Products/productAnalytics.js";
 
 const router = express.Router();
 
@@ -40,6 +42,13 @@ router
 router
 .route("/product/:productId")
 .get(handleBussinessAuthentication,handleGetProduct)
+
+router
+.route("/analytics/product/:productId/")
+.get(handleBussinessAuthentication,handleProductAnalytics)
+
+router.route("/orders")
+.get(handleBussinessAuthentication,handleGetAllBussinessOrders)
 
 router
   .route("/login")

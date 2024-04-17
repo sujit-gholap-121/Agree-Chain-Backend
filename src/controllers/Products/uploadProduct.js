@@ -4,7 +4,7 @@ import { cloudinaryUpload } from "../../Utilities/cloudinaryUpload.js";
 
 export  async function handleUploadProduct(req, res) {
   // console.log(req.userId, req.email, req.mobile,req.files);
-  const { name, description, stocks_Available, price } = req.body;
+  const { name, description, stocks_Available, price,productCategory } = req.body;
   console.log(req.body,req.file)
   try {
      const {destination,filename}=req.file
@@ -14,16 +14,17 @@ export  async function handleUploadProduct(req, res) {
       name,
       description,
       stocks_Available,
+     category:productCategory,
       productImage:isUploaded.url,
       price,
       owner: req.userId,
-    });
-    const isFound=await Product.find({_id:createdProduct._id})
-    console.log(isFound)
+    })
+    const isFound=await Product.findOne({_id:createdProduct._id})
+    // console.log(isFound.owner)
     if (isFound){
         res.status(201).json({
             "msg":"Product Added Successfully",
-            product:isFound[0]
+            product:isFound
         })
     }else{
        res.status(503).json({

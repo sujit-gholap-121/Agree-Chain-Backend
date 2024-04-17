@@ -1,34 +1,34 @@
 const Categories=[{
-    id:"Men",
+    id:"men",
     value:"Men"
 },{
-    id:"Electronics",
+    id:"electronics",
     value:"Electronics"
 },{
-    id:"Women",
+    id:"women",
     value:"Women"
 },
-{ id:"Kids",
+{ id:"kids",
 value:"Kids"}
 ,{
-    id:"WesternWear",
-    value:"WEstern Wear"
-},{ id:"Mobile",
+    id:"westernWear",
+    value:"Western Wear"
+},{ id:"mobile",
 value:"Mobile"},{
-    id:"Laptop",
+    id:"laptop",
     value:"Laptop"
 },{
-    id:"Accessories",
+    id:"accessories",
     value:"Accessories"
 },{
-    id:"Camera",
+    id:"camera",
     value:"Camera"
 },{
-    id:"Watches",
+    id:"watches",
     value:"Watches"
-},{ id:"Sports",
+},{ id:"sports",
 value:"Sports"},{
-    id:"Footwear",
+    id:"footwear",
     value:"Footwear"
 }
 ].sort((a,b)=>a.id.toLowerCase()<b.id.toLowerCase()?-1:1)

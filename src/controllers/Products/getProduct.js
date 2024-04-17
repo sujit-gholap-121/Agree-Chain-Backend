@@ -1,19 +1,31 @@
+import Bussiness from "../../models/bussiness.js"
 import Product from "../../models/product.js"
 
-export async function  handleGetProduct(req,res){
+async function  handleGetProduct(req,res){
     const {productId}=req.params
     try{
         const getProduct=await Product.find({
             _id:productId
-        },{_id:1})
-        console.log(getProduct)
+        })
+        if (!getProduct){
+            throw new Error("Error fetching provided product")
+        }
+
+        const getBussiness=await Bussiness.find({
+            _id:getProduct[0].owner
+        })
+        if (!getBussiness){
+            throw new Error("Error fetching bussiness info for provided product")
+        }
         res.status(202).json({
-            product:getProduct
+            product:getProduct,
+            bussinesInfo:getBussiness
         })
     }catch(e){
         res.status(501).json({
             msg:e.message
-        }).end()
+        })
     }
-
 }
+
+export default handleGetProduct

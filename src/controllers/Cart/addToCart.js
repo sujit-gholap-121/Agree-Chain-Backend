@@ -3,7 +3,7 @@ import Cart from "../../models/cart.js";
 export async function handleAddToCart(req, res) {
   const { userId } = req;
   const { productId } = req.params;
-  const { quantity } = req.query;
+  const { quantity ,price} = req.query;
   console.log(quantity, productId);
   try {
     const validCart = await Cart.findOne({ customerID: userId });
@@ -14,6 +14,7 @@ export async function handleAddToCart(req, res) {
           {
             productId,
             quantity,
+            price
           },
         ],
       });
