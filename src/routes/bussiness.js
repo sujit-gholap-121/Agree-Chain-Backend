@@ -14,7 +14,8 @@ import handleGetProduct  from "../controllers/Products/getProduct.js";
 import { handleGetAllProduct } from "../controllers/Products/getAllProducts.js";
 import handleGetCategories from "../controllers/getCategories.js";
 import handleGetAllBussinessOrders from "../controllers/Order/handleGetAllBussinessOrders.js";
-import handleProductAnalytics from "../controllers/Products/productAnalytics.js";
+import handleBuyProduct from "../controllers/Products/buyProduct.js"
+import handleResellProduct from "../controllers/Products/resellProduct.js";
 
 const router = express.Router();
 
@@ -31,8 +32,10 @@ router.route("/").get(handleGetAllBussiness).post(handleCreateBussiness);
 router.route("product/addCart/:productId")
 .post(handleBussinessAuthentication)
 
+
+
 router
-  .route("/getproducts")
+  .route("/getproducts/:productId")
   .get(handleBussinessAuthentication,handleGetAllProduct)
 
 router
@@ -40,12 +43,12 @@ router
   .post(upload.single("productImage"),handleBussinessAuthentication,handleUploadProduct)
 
 router
-.route("/product/:productId")
-.get(handleBussinessAuthentication,handleGetProduct)
+.route("/buyproduct/:productId")
+.get(handleBussinessAuthentication,handleBuyProduct)
 
 router
-.route("/analytics/product/:productId/")
-.get(handleBussinessAuthentication,handleProductAnalytics)
+.route("/resell/:productId")
+.get(handleBussinessAuthentication,handleResellProduct)
 
 router.route("/orders")
 .get(handleBussinessAuthentication,handleGetAllBussinessOrders)

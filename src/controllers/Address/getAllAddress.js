@@ -1,4 +1,4 @@
-import UserAddress from "../../models/userAddress.js"
+// import UserAddress from "../../models/userAddress.js"
 
 export default async function handleGetAllAddress(req,res){
     const {userId}=req

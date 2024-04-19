@@ -14,6 +14,7 @@ import handleGetSpecificCategory from "../controllers/Categories/handleGetSpecif
 import handleGetProduct  from "../controllers/Products/getProduct.js";
 import SearchProducts from "../controllers/searchProducts.js";
 import handleGetCategories from "../controllers/getCategories.js";
+import { handleGetAgriCategory } from "../controllers/Categories/getagriCategories.js";
 
 const router = express.Router();
 
@@ -32,7 +33,7 @@ router.route("/order")
 .post(handleUserAuthentication,handleCreateOrder)
 
 router.route("/getcategories")
-.get(handleUserAuthentication,handleGetCategories)
+.get(handleUserAuthentication,handleGetAgriCategory)
 
 router.route("/category/:categoryId")
 .get(handleUserAuthentication,handleGetSpecificCategory)

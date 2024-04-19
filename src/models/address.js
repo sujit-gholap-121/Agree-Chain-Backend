@@ -9,10 +9,6 @@ pincode:{
     type:Number,
     required:true
 },
-street:{
-    type:String,
-    required:true
-},
 state:{
     type:String,
     required:true
@@ -21,10 +17,10 @@ state:{
     required:true
 },
 
-bussinessID:{ 
+userId:{ 
     type:mongoose.Schema.type.ObjectId,
     ref:"User"
 }
 })
 
-// export default BussinessAddress=mongoose.model("BussinessAddress",addressScheme)
+export default Address=mongoose.model("Address",addressScheme)

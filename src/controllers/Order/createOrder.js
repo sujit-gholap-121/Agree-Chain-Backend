@@ -1,11 +1,11 @@
 // import { Promise } from "mongoose";
 import DB from "../../DB/MongoConnection.js";
-import BussinessOrder from "../../models/bussinessOrders.js";
+// import BussinessOrder from "../../models/bussinessOrders.js";
 // import Product from "../../models/product.js"
 import Cart from "../../models/cart.js";
 import Order from "../../models/order.js";
 import Product from "../../models/product.js";
-import UserAddress from "../../models/userAddress.js";
+// import UserAddress from "../../models/userAddress.js";
 
 function getProduct(item) {
   return Product.findOne({ _id: item.productId });
@@ -18,6 +18,7 @@ export default async function handleCreateOrder(req, res) {
     const { userId } = req.body;
     // console.log(req.body)
     const { addressId, productDetails } = req.body;
+    
     const groupBussiness = [];
     const allOrderBussinesses = productDetails.forEach((ele) => {
       if (!groupBussiness.includes(ele.owner)) {
