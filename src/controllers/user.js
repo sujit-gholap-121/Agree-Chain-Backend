@@ -13,7 +13,7 @@ export async function handleGetAllUsers(req, res) {
 
 export async function handleCreateUser(req, res) {
   console.log(req.body);
-  const { name, mobile, mobile_prefix, email, password, DOB, gender } =
+  const { name, mobile,  email, password,accountType} =
     req.body;
   try {
     if (
@@ -36,11 +36,9 @@ export async function handleCreateUser(req, res) {
     const createdUser=await User.create({
       name,
       mobile,
-      mobile_prefix,
       email:email.toLowerCase(),
       password:hashedPassword,
-      DOB,
-      gender,
+     accountType
     });
 
     const findUser=await User.findById(createdUser._id).select("-password")
